@@ -6,7 +6,7 @@ ENV OPENFIRE_VERSION=4_2_1
 
 RUN set -ex \
  && apk --no-cache add curl openjdk8 ca-certificates bash \
- && mkdir /opt \
+ && mkdir -p /opt \
  && curl -sSfL "https://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_${OPENFIRE_VERSION}.tar.gz" | \
       tar -xz -C /opt \
  && curl -sSfLo /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 \
