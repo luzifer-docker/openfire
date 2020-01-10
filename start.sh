@@ -3,8 +3,8 @@ set -euo pipefail
 
 # init configuration
 [ -e "/data/security/keystore" ] || {
-  mkdir -p /data/security
-  mv /opt/openfire/resources/security/keystore /data/security/keystore
+	mkdir -p /data/security
+	mv /opt/openfire/resources/security/keystore /data/security/keystore
 }
 
 [ -d "/data/embedded-db" ] || { mkdir -p /data/embedded-db; }
@@ -20,14 +20,14 @@ rm -rf /opt/openfire/conf && ln -sfn /data/conf /opt/openfire/conf
 # let openfire start
 echo "Waiting for Openfire to start..."
 count=0
-while [ ! -e /opt/openfire/logs/all.log ]; do
-    if [ $count -eq 60 ]; then
-        echo "Error starting Openfire. Exiting"
-        exit 1
-    fi
-    count=$(( $count + 1 ))
-    sleep 1
+while [ ! -e /opt/openfire/logs/stdoutt.log ]; do
+	if [ $count -eq 60 ]; then
+		echo "Error starting Openfire. Exiting"
+		exit 1
+	fi
+	count=$((count + 1))
+	sleep 1
 done
 
 # tail the log
-tail -f /opt/openfire/logs/all.log
+tail -F /opt/openfire/logs/*.log
