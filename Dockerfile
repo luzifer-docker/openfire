@@ -2,10 +2,14 @@ FROM alpine
 
 LABEL maintainer Knut Ahlers <knut@ahlers.me>
 
-ENV OPENFIRE_VERSION=4_3_2
+ENV OPENFIRE_VERSION=4_4_4
 
 RUN set -ex \
- && apk --no-cache add curl openjdk8 ca-certificates bash \
+ && apk --no-cache add \
+      bash \
+      ca-certificates \
+      curl \
+      openjdk11 \
  && mkdir -p /opt \
  && curl -sSfL "https://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_${OPENFIRE_VERSION}.tar.gz" | \
       tar -xz -C /opt \
