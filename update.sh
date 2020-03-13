@@ -11,7 +11,7 @@ git reset --hard origin/master
 
 version=$(curl -s "https://lv.luzifer.io/catalog-api/openfire/latest.txt?p=version")
 versionVar=$(echo "${version}" | sed 's/\./_/g')
-grep -q "OPENFIRE_VERSION=${versionVar} " Dockerfile && exit 0 || echo "Update required"
+grep -q "OPENFIRE_VERSION=${versionVar}" Dockerfile && exit 0 || echo "Update required"
 
 sed -Ei \
 	-e "s/OPENFIRE_VERSION=[0-9_]+/OPENFIRE_VERSION=${versionVar}/" \
