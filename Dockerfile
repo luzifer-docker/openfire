@@ -2,7 +2,7 @@ FROM alpine
 
 LABEL maintainer Knut Ahlers <knut@ahlers.me>
 
-ENV OPENFIRE_VERSION=4_5_4
+ENV OPENFIRE_VERSION=4_6_0
 
 RUN set -ex \
  && apk --no-cache add \
