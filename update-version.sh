@@ -29,7 +29,7 @@ docker run -d --name luzifer-openfire $(docker build -q .)
 trap cleanup EXIT
 
 sleep 5 # Container needs a moment to spin up
-docker exec -ti luzifer-openfire sh -exc 'apk --no-cache add curl && curl -sL localhost:9090/index.jsp | grep -q "Openfire Setup"'
+docker exec -i luzifer-openfire sh -exc 'apk --no-cache add curl && curl -sL localhost:9090/index.jsp | grep -q "Openfire Setup"'
 
 ### ---- ###
 
