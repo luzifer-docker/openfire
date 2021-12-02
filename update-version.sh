@@ -9,7 +9,7 @@ git reset --hard origin/master
 
 ### ---- ###
 
-version=$(curl -s "https://lv.luzifer.io/catalog-api/openfire/latest.txt?p=version")
+version=$(curl -s "https://lv.luzifer.io/v1/catalog/openfire/latest/version")
 versionVar=$(echo "${version}" | sed 's/\./_/g')
 grep -q "OPENFIRE_VERSION=${versionVar}" Dockerfile && exit 0 || echo "Update required"
 
